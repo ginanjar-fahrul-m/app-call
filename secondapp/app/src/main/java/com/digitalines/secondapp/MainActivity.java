@@ -15,6 +15,8 @@ public class MainActivity extends Activity {
 
     private static String SECOND_PARAM = "secondparam";
 
+    private static String BUNDLE_NAME = "params";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,7 +29,7 @@ public class MainActivity extends Activity {
 
         Intent activityIntent = getIntent();
         if (activityIntent != null) {
-            Bundle params = activityIntent.getExtras();
+            Bundle params = activityIntent.getBundleExtra(BUNDLE_NAME);
             if (params != null) {
                 showParams(params);
             }
@@ -42,12 +44,12 @@ public class MainActivity extends Activity {
             String firstParam = data.getQueryParameter(FIRST_PARAM);
             String secondParam = data.getQueryParameter(SECOND_PARAM);
 
-            String output = "Data from " + scheme + ":" + host + "/n";
+            String output = "Data from " + scheme + ":" + host + "\n";
             if (!firstParam.isEmpty()) {
-                output += "First Param = " + firstParam + "/n";
+                output += "First Param = " + firstParam + "\n";
             }
             if (!secondParam.isEmpty()) {
-                output += "Second Param = " + secondParam + "/n";
+                output += "Second Param = " + secondParam + "\n";
             }
 
             ((TextView) findViewById(R.id.textView)).setText(output);
@@ -58,12 +60,12 @@ public class MainActivity extends Activity {
         String firstParam = params.getString(FIRST_PARAM);
         String secondParam = params.getString(SECOND_PARAM);
 
-        String output = "Data from another app" + "/n";
+        String output = "Data from another app" + "\n";
         if (!firstParam.isEmpty()) {
-            output += "First Param = " + firstParam + "/n";
+            output += "First Param = " + firstParam + "\n";
         }
         if (!secondParam.isEmpty()) {
-            output += "Second Param = " + secondParam + "/n";
+            output += "Second Param = " + secondParam + "\n";
         }
 
         ((TextView) findViewById(R.id.textView)).setText(output);

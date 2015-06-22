@@ -26,6 +26,8 @@ public class MainActivity extends Activity {
 
     private static String SECOND_APP_ID = "com.digitalines.secondapp";
 
+    private static String BUNDLE_NAME = "params";
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +54,8 @@ public class MainActivity extends Activity {
 
         if (launchIntent != null) {
             launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            startActivity(launchIntent, params);
+            launchIntent.putExtra(BUNDLE_NAME, params);
+            startActivity(launchIntent);
         } else {
             launchIntent = new Intent(Intent.ACTION_VIEW);
             launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
