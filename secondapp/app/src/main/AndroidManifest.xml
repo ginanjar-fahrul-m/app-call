@@ -28,6 +28,10 @@
             android:name=".CallActivity"
             android:label="@string/title_activity_call" >
             <intent-filter>
+                <action android:name="com.digitalines.secondapp.CallActivity" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+            <intent-filter>
                 <action android:name="android.intent.action.VIEW" />
 
                 <category android:name="android.intent.category.DEFAULT" />

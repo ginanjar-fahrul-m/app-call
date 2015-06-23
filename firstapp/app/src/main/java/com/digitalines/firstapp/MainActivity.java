@@ -36,12 +36,19 @@ public class MainActivity extends Activity {
         ((Button) findViewById(R.id.button)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                callApp();
+                callApp(true);
+            }
+        });
+
+        ((Button) findViewById(R.id.button2)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                callApp(false);
             }
         });
     }
 
-    private void callApp() {
+    private void callApp(boolean main) {
         String firstParam = ((EditText) findViewById(R.id.editText)).getText().toString();
         String secondParam = ((EditText) findViewById(R.id.editText2)).getText().toString();
 
@@ -49,8 +56,14 @@ public class MainActivity extends Activity {
         params.putString(FIRST_PARAM, firstParam);
         params.putString(SECOND_PARAM, secondParam);
 
-        Intent launchIntent = getPackageManager()
-                .getLaunchIntentForPackage(SECOND_APP_ID);
+        Intent launchIntent;
+
+        if (main) {
+            launchIntent = getPackageManager()
+                    .getLaunchIntentForPackage(SECOND_APP_ID);
+        } else {
+            launchIntent = new Intent("com.digitalines.secondapp.CallActivity");
+        }
 
         if (launchIntent != null) {
             launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
