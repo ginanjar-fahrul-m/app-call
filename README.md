@@ -66,7 +66,7 @@ The demo include sending params to apps.
 
 ### Important: XML Manifest (Second Application)
 
-For app call, provide add intent filter custom action
+For app call, add intent filter custom action
 
 ```xml
 <intent-filter>
