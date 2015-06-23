@@ -20,7 +20,7 @@ href="http://digitalines.com/call?firstparam=first&secondparam=second"
 
   - `app-call/firstapp`
 
-```
+```java
     Intent launchIntent = getPackageManager()
                 .getLaunchIntentForPackage(SECOND_APP_ID);
 
@@ -38,7 +38,7 @@ href="http://digitalines.com/call?firstparam=first&secondparam=second"
 
   - Sending params with Intent Extra: 
 
-```
+```java
 Bundle params = new Bundle();
 params.putString(FIRST_PARAM, firstParam);
 params.putString(SECOND_PARAM, secondParam);
