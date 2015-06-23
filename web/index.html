@@ -9,18 +9,29 @@
 	<div class="container">
 		<div class="row">
 			<h1>AppCall</h1>
-			<form class="form-inline">
+			<form class="form">
 				<div class="form-group">
 					<input class="form-control" type="text" id="first-param" value="first">
 					<input class="form-control" type="text" id="second-param" value="second">
-					<a href="javascript:callApp();" class="btn btn-info" role="button">Open App</a>
+				</div>
+				<div class="form-group">
+					<a href="javascript:callAppMain();" class="btn btn-info" role="button">Open App Main</a>
+					<a href="javascript:callAppActivity();" class="btn btn-info" role="button">Open App Activity</a>
 				</div>
 			</form>
 		</div>
 	</div>
 	<script type="text/javascript">
-		function callApp() {
-			window.open("http://digitalines.com");
+		function callAppMain() {
+			var firstParam = document.getElementById("first-param").value;
+			var secondParam = document.getElementById("second-param").value;
+			window.open("http://digitalines.com/main?firstparam=" + firstParam + "&secondparam=" + secondParam);
+		}
+
+		function callAppActivity() {
+			var firstParam = document.getElementById("first-param").value;
+                        var secondParam = document.getElementById("second-param").value;
+                        window.open("http://digitalines.com/call?firstparam=" + firstParam + "&secondparam=" + secondParam);
 		}
 	</script>
 </body>
