@@ -18,12 +18,24 @@ href="http://digitalines.com/call?firstparam=first&secondparam=second"
 
 ### First Application 
 
-  - `app-call/firstapp`
+  - In First Application `app-call/firstapp`
+
+Call main activity:
 
 ```java
-    Intent launchIntent = getPackageManager()
+    launchIntent = getPackageManager()
                 .getLaunchIntentForPackage(SECOND_APP_ID);
+```
 
+Call regular activity:
+
+```java
+    launchIntent = new Intent(SECOND_APP_ID + ".CallActivity");
+```
+
+Then:
+
+```java
     if (launchIntent != null) {
         launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         launchIntent.putExtra(BUNDLE_NAME, params);
@@ -77,10 +89,6 @@ Open with Chrome Android. APKs are available on `app-call/apk`
 ```
 http://digitalines.com/app-call/web
 ```
-
-### Todo's
-
-App-to-app call for regular activity
 
 ### FAQ
 

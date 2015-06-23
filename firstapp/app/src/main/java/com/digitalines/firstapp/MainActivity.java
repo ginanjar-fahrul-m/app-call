@@ -1,6 +1,7 @@
 package com.digitalines.firstapp;
 
 import android.app.Activity;
+import android.content.ActivityNotFoundException;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
@@ -13,6 +14,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import java.util.Collections;
 import java.util.List;
@@ -62,18 +64,22 @@ public class MainActivity extends Activity {
             launchIntent = getPackageManager()
                     .getLaunchIntentForPackage(SECOND_APP_ID);
         } else {
-            launchIntent = new Intent("com.digitalines.secondapp.CallActivity");
+            launchIntent = new Intent(SECOND_APP_ID + ".CallActivity");
         }
 
-        if (launchIntent != null) {
-            launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            launchIntent.putExtra(BUNDLE_NAME, params);
-            startActivity(launchIntent);
-        } else {
-            launchIntent = new Intent(Intent.ACTION_VIEW);
-            launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-            launchIntent.setData(Uri.parse("market://details?id=" + SECOND_APP_ID));
-            startActivity(launchIntent);
+        try {
+            if (launchIntent != null) {
+                launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                launchIntent.putExtra(BUNDLE_NAME, params);
+                startActivity(launchIntent);
+            } else {
+                launchIntent = new Intent(Intent.ACTION_VIEW);
+                launchIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                launchIntent.setData(Uri.parse("market://details?id=" + SECOND_APP_ID));
+                startActivity(launchIntent);
+            }
+        } catch (ActivityNotFoundException e) {
+            Toast.makeText(this, "Activity not found in any manifest", Toast.LENGTH_SHORT).show();
         }
     }
 
