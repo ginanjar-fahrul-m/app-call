@@ -15,6 +15,26 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="digitalines.com" android:scheme="http" android:path="/main"/>
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".CallActivity"
+            android:label="@string/title_activity_call" >
+            <intent-filter>
+                <action android:name="android.intent.action.VIEW" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+
+                <data android:host="digitalines.com" android:scheme="http" android:path="/call"/>
+            </intent-filter>
         </activity>
     </application>
 
