@@ -66,7 +66,16 @@ The demo include sending params to apps.
 
 ### Important: XML Manifest (Second Application)
 
-Provide the intent filter to category `BROWSABLE` and set data scheme like this:
+For app call, provide add intent filter custom action
+
+```xml
+<intent-filter>
+    <action android:name="com.digitalines.secondapp.CallActivity" />
+    <category android:name="android.intent.category.DEFAULT" />
+</intent-filter>
+```
+
+For browser call, add intent filter to category `BROWSABLE` and set data scheme like this:
 
 ```xml
 <intent-filter>
